@@ -1,0 +1,16 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug Go",
+            "type": "go",
+            "request": "launch",
+            "mode": "auto",
+            "program": "${workspaceFolder}",
+            "env": {
+                "DB_DSN": "root:Teste@123@tcp(localhost:3306)/subscriptions?charset=utf8mb4&parseTime=True&loc=Local"
+            },
+            "args": []
+        }
+    ]
+}
