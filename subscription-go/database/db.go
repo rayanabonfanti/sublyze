@@ -10,7 +10,7 @@ import (
 	"gorm.io/gorm"
 )
 
-var db *gorm.DB
+var DB *gorm.DB
 
 func InitDB() {
 	err := godotenv.Load()
@@ -23,14 +23,18 @@ func InitDB() {
 		log.Fatal("DB_DSN environment variable not set")
 	}
 
-	db, err = gorm.Open(mysql.Open(dsn), &gorm.Config{})
+	DB, err = gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
 		log.Fatal("Failed to connect to database: ", err)
 	}
 
-	db.AutoMigrate(&models.Subscription{})
+	DB.AutoMigrate(&models.Subscription{})
 }
 
 func GetDB() *gorm.DB {
-	return db
+	return DB
+}
+
+func SetDB(db *gorm.DB) {
+	DB = db
 }
